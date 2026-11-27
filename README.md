@@ -23,9 +23,9 @@
 ## 📸 界面预览
 
 <p align="center">
-  <img src="./screenshots/01-home.png" width="260" alt="情绪树洞主界面" />
+  <img src="./01-home.png" width="260" alt="情绪树洞主界面" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./screenshots/02-record.png" width="260" alt="记录此刻" />
+  <img src="./02-record.png" width="260" alt="记录此刻" />
 </p>
 <p align="center">
   <sub><b>极简治愈的主界面</b> · 每一天的情绪都有迹可循</sub>
@@ -36,9 +36,9 @@
 <br />
 
 <p align="center">
-  <img src="./screenshots/03-stats.png" width="260" alt="数据统计" />
+  <img src="./03-stats.png" width="260" alt="数据统计" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./screenshots/05-backup.png" width="260" alt="备份与恢复" />
+  <img src="./05-backup.png" width="260" alt="备份与恢复" />
 </p>
 <p align="center">
   <sub><b>原生 SVG 数据统计</b> · 情绪占比与明细一目了然</sub>
@@ -49,9 +49,9 @@
 <br />
 
 <p align="center">
-  <img src="./screenshots/04-settings.png" width="260" alt="情绪设置" />
+  <img src="./04-settings.png" width="260" alt="情绪设置" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./screenshots/06-custom.png" width="260" alt="新增自定义情绪" />
+  <img src="./06-custom.png" width="260" alt="新增自定义情绪" />
 </p>
 <p align="center">
   <sub><b>专属情绪设置面板</b> · 默认图标可换，支持撤回</sub>
