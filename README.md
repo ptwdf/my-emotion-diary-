@@ -22,42 +22,21 @@
 
 ## 📸 界面预览
 
-<p align="center">
-  <img src="./01-home.png" width="260" alt="情绪树洞主界面" />
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./02-record.png" width="260" alt="记录此刻" />
-</p>
-<p align="center">
-  <sub><b>极简治愈的主界面</b> · 每一天的情绪都有迹可循</sub>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <sub><b>记录此刻</b> · 支持多选情绪与快捷自定义</sub>
-</p>
+| 极简主界面 | 记录此刻 |
+| :---: | :---: |
+| <img src="./01-home.png" width="100%" /> | <img src="./02-record.png" width="100%" /> |
 
-<br />
+---
 
-<p align="center">
-  <img src="./03-stats.png" width="260" alt="数据统计" />
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./05-backup.png" width="260" alt="备份与恢复" />
-</p>
-<p align="center">
-  <sub><b>原生 SVG 数据统计</b> · 情绪占比与明细一目了然</sub>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <sub><b>本地备份与恢复</b> · 数据安全掌握在自己手中</sub>
-</p>
+| 数据统计 | 情绪设置 |
+| :---: | :---: |
+| <img src="./03-stats.png" width="100%" /> | <img src="./04-settings.png" width="100%" /> |
 
-<br />
+---
 
-<p align="center">
-  <img src="./04-settings.png" width="260" alt="情绪设置" />
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./06-custom.png" width="260" alt="新增自定义情绪" />
-</p>
-<p align="center">
-  <sub><b>专属情绪设置面板</b> · 默认图标可换，支持撤回</sub>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <sub><b>无限扩展自定义情绪</b> · 命名与 Emoji 随心搭配</sub>
-</p>
+| 备份与恢复 | 自定义情绪 |
+| :---: | :---: |
+| <img src="./05-backup.png" width="100%" /> | <img src="./06-custom.png" width="100%" /> |
 
 ## 🚀 如何使用？
 
