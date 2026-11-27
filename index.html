@@ -4,37 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>情绪树洞</title>
-  <link rel="apple-touch-icon" href="https://ptwdf.github.io/my-emotion-diary-/icon.png?v=99">
-    <link rel="icon" href="https://ptwdf.github.io/my-emotion-diary-/icon.png?v=99">
+<link rel="apple-touch-icon" href="https://ptwdf.github.io/my-emotion-diary-/icon.png">
+<link rel="icon" href="https://ptwdf.github.io/my-emotion-diary-/icon.png">
 <style>
 :root{
-  --bg:#F6F5F2;
-  --card:#FFFFFF;
-  --ink:#4B4453;
-  --ink-soft:#9A93A0;
-  --line:#EFE8E1;
-  --accent:#C9B39F;
-  --accent-deep:#B89B83;
-  --radius:20px;
-  --radius-sm:14px;
-  --shadow:0 10px 30px rgba(120,105,90,.08);
+  --bg:#F6F5F2; --card:#FFFFFF; --ink:#4B4453; --ink-soft:#9A93A0;
+  --line:#EFE8E1; --accent:#C9B39F; --accent-deep:#B89B83;
+  --radius:20px; --radius-sm:14px; --shadow:0 10px 30px rgba(120,105,90,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
-  background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;
-}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;}
 .wrap{max-width:1060px;margin:0 auto;padding:26px 20px 110px;}
-.app{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;}
-.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#F0E6DA,#C9B39F);display:flex;align-items:center;justify-content:center;font-size:23px;box-shadow:var(--shadow);}
-.app h1{font-size:20px;font-weight:700;letter-spacing:.5px;line-height:1.25;}
-.app p{font-size:12.5px;color:var(--ink-soft);}
-.app .title{flex:1;min-width:0;}
-.undobtn{border:1px solid var(--line);background:#fff;color:var(--accent-deep);padding:8px 14px;border-radius:999px;font-size:12.5px;cursor:pointer;flex:none;transition:.12s;white-space:nowrap;}
-.undobtn:hover{background:#F3ECE4;}
-.undobtn:disabled{opacity:.4;cursor:not-allowed;background:#FBF8F4;}
-.backupbtn{width:34px;height:34px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--accent-deep);font-size:16px;cursor:pointer;flex:none;line-height:1;display:flex;align-items:center;justify-content:center;transition:.12s;}
-.backupbtn:hover{background:#F3ECE4;}
+
+/* ---- 最上方一行：右上角小问号 ---- */
+.topbar{display:flex;justify-content:flex-end;align-items:center;margin-bottom:8px;}
+.help-mini{
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--line);background:#FBF8F4;color:var(--accent-deep);
+  font-size:13px;font-weight:700;cursor:pointer;line-height:1;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .12s, transform .12s;font-family:inherit;
+  box-shadow:0 2px 6px rgba(120,105,90,.06);
+}
+.help-mini:hover{background:#F0E9E1;color:var(--ink);}
+.help-mini:active{background:#E8DFD5;transform:scale(.94);}
+
+/* ---- 顶部布局 ---- */
+.app{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin-bottom:22px;flex-wrap:wrap;
+}
+.app-left{display:flex;align-items:center;gap:14px;min-width:0;flex:1 1 auto;}
+.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#F0E6DA,#C9B39F);display:flex;align-items:center;justify-content:center;font-size:23px;box-shadow:var(--shadow);flex:none;}
+.title{min-width:0;}
+.app h1{font-size:20px;font-weight:700;letter-spacing:.5px;line-height:1.25;color:var(--ink);}
+.app p{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
+.app-actions{display:flex;align-items:center;gap:10px;flex:none;margin-left:auto;}
+
+/* 撤回（文字胶囊） */
+.undobtn{border:1px solid var(--line);background:#FBF8F4;color:var(--accent-deep);padding:8px 14px;border-radius:999px;font-size:12.5px;cursor:pointer;flex:none;transition:background .12s, transform .12s;white-space:nowrap;font-family:inherit;box-shadow:0 2px 6px rgba(120,105,90,.06);}
+.undobtn:hover{background:#F0E9E1;color:var(--ink);}
+.undobtn:active{background:#E8DFD5;transform:scale(.97);}
+.undobtn:disabled{opacity:.4;cursor:not-allowed;background:#FBF8F4;color:var(--accent-deep);}
+
+/* 圆形图标按钮（设置、备份） */
+.circle-btn{
+  width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--line);
+  background:#FBF8F4;
+  color:var(--accent-deep);
+  font-size:16px;font-weight:600;
+  cursor:pointer;line-height:1;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .12s, transform .12s;
+  font-family:inherit;
+  box-shadow:0 2px 6px rgba(120,105,90,.06);
+}
+.circle-btn:hover{background:#F0E9E1;color:var(--ink);}
+.circle-btn:active{background:#E8DFD5;transform:scale(.96);}
+.circle-btn:disabled{opacity:.35;cursor:not-allowed;background:#FBF8F4;}
+
 .grid{display:grid;grid-template-columns:minmax(0,1fr) 332px;gap:20px;align-items:start;}
 .panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;}
 .datebar{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
@@ -47,7 +76,8 @@ body{
 .todaybtn:hover{background:#F3ECE4;}
 .list{min-height:160px;}
 .rec{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:10px;animation:pop .25s ease both;}
-.rec-tag{flex:none;padding:3px 11px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap;margin-top:1px;display:flex;align-items:center;gap:4px;}
+.rec-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;}
+.rec-tag{flex:none;padding:3px 11px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:4px;}
 .rec-body{flex:1;min-width:0;}
 .rec-time{font-size:13px;font-weight:600;}
 .rec-reason{font-size:13px;color:var(--ink-soft);margin-top:3px;word-break:break-word;}
@@ -75,20 +105,25 @@ body{
 .cal-cell.today{box-shadow:inset 0 0 0 1.5px var(--accent);}
 .cal-legend{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:10.5px;color:var(--ink-soft);}
 .cal-legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
+
+/* ---- 统计面板 ---- */
 .stats-tabs{display:flex;gap:8px;margin-bottom:14px;}
-.tab{flex:1;padding:8px 0;border-radius:999px;border:none;background:#F2ECE5;color:var(--ink-soft);font-size:13px;cursor:pointer;font-weight:600;transition:.12s;}
+.tab{flex:1;padding:8px 0;border-radius:999px;border:none;background:#F2ECE5;color:var(--ink-soft);font-size:13px;cursor:pointer;font-weight:600;transition:.12s;font-family:inherit;}
 .tab.active{background:var(--accent-deep);color:#fff;}
+
 .metric-row{display:flex;gap:8px;margin-bottom:14px;}
-.metric{flex:1;background:#FAF6F1;border-radius:14px;padding:12px 8px;text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center;}
-.m-label{font-size:11px;color:var(--ink-soft); margin:0 0 4px 0;}
-.m-num{font-size:22px;font-weight:700;color:var(--accent-deep); line-height:1.2;}
-.m-unit{font-size:10px;color:#C4BDC6; margin-top:2px;}
+.metric{flex:1;background:#FAF6F1;border-radius:14px;padding:12px 8px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.m-label{font-size:11px;color:var(--ink-soft);margin:0 0 4px 0;}
+.m-num{font-size:22px;font-weight:700;color:var(--accent-deep);line-height:1.2;}
+.m-unit{font-size:10px;color:#C4BDC6;margin-top:2px;}
 .chart-wrap{background:#FAF6F1;border-radius:14px;padding:12px 12px 8px;margin-bottom:12px;}
 .chart-title{font-size:11.5px;color:var(--ink-soft);margin-bottom:8px;text-align:center;}
 .chart{width:100%;height:auto;display:block;}
 #fab{position:fixed;right:26px;bottom:26px;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#D8BEAB,#C4A791);color:#fff;font-size:30px;font-weight:300;border:none;cursor:pointer;box-shadow:0 12px 28px rgba(160,130,105,.4);display:flex;align-items:center;justify-content:center;transition:transform .15s;z-index:40;}
 #fab:hover{transform:scale(1.06);}
 #fab:active{transform:scale(.95);}
+
+/* ---- 弹窗 ---- */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:50;padding:20px;}
 .modal.open{display:flex;}
 .modal-backdrop{position:absolute;inset:0;background:rgba(75,68,83,.35);backdrop-filter:blur(3px);}
@@ -96,104 +131,122 @@ body{
 .modal.open .modal-card{animation:slideUp .22s ease both;}
 .modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
 .modal-head h2{font-size:17px;font-weight:700;}
-.close{width:30px;height:30px;border-radius:50%;border:none;background:#F2ECE5;color:var(--ink-soft);cursor:pointer;font-size:14px;line-height:1;}
+.close{width:30px;height:30px;border-radius:50%;border:none;background:#F2ECE5;color:var(--ink-soft);cursor:pointer;font-size:14px;line-height:1;flex:none;}
 .field{margin-bottom:14px;}
 .field label{display:block;font-size:12.5px;color:var(--ink-soft);margin-bottom:6px;font-weight:600;}
 .field input[type=time],.field textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:15px;font-family:inherit;background:#FBF8F4;color:var(--ink);}
 .field textarea{resize:vertical;}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
 .emo-row{display:flex;gap:8px;flex-wrap:wrap;}
-.emo-btn{flex:1;min-width:22%;padding:9px 4px;border-radius:12px;border:2px solid transparent;cursor:pointer;font-size:13.5px;font-weight:600;transition:.12s;display:flex;align-items:center;justify-content:center;gap:4px;}
+.emo-btn{flex:1;min-width:22%;padding:9px 4px;border-radius:12px;border:2px solid transparent;cursor:pointer;font-size:13.5px;font-weight:600;transition:.12s;display:flex;align-items:center;justify-content:center;gap:4px;font-family:inherit;}
 .emo-btn.active{border-color:var(--ec);box-shadow:0 4px 12px rgba(0,0,0,.08);}
-.emo-btn[data-emotion="开心"]{--ec:#B88736;background:#FCEAD1;color:#B88736;}
-.emo-btn[data-emotion="平静"]{--ec:#4B755B;background:#C5D8C1;color:#4B755B;}
-.emo-btn[data-emotion="期待"]{--ec:#6D8CA8;background:#DAE5F0;color:#6D8CA8;}
-.emo-btn[data-emotion="焦虑"]{--ec:#8A7153;background:#EAE0D3;color:#8A7153;}
-.emo-btn[data-emotion="疲惫"]{--ec:#8C6550;background:#EADDD5;color:#8C6550;}
-.emo-btn[data-emotion="委屈"]{--ec:#8A6DA3;background:#EEE7F4;color:#8A6DA3;}
-.emo-btn[data-emotion="生气"]{--ec:#AF6A76;background:#F3E6E7;color:#AF6A76;}
-.emo-btn[data-emotion="难过"]{--ec:#4C6278;background:#E3E8EF;color:#4C6278;}
+.emo-more-row{display:flex;gap:8px;margin-top:8px;}
 .form-error{color:#C96F5E;font-size:12.5px;min-height:18px;margin-bottom:4px;}
 .modal-actions{display:flex;gap:10px;margin-top:6px;}
-.btn{flex:1;padding:12px 0;border-radius:14px;border:none;font-size:14.5px;font-weight:600;cursor:pointer;transition:.12s;}
+.btn{flex:1;padding:12px 0;border-radius:14px;border:none;font-size:14.5px;font-weight:600;cursor:pointer;transition:.12s;font-family:inherit;}
 .btn.ghost{background:#F2ECE5;color:var(--ink);}
 .btn.primary{background:linear-gradient(135deg,#D8BEAB,#C4A791);color:#fff;box-shadow:0 8px 18px rgba(160,130,105,.3);}
 .btn:active{transform:scale(.98);}
+.btn.small{padding:10px 0;font-size:13px;border-radius:12px;}
+
+/* ---- 备份文件列表 ---- */
+.backup-file-item{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#FAF6F1;border-radius:12px;margin-bottom:6px;}
+.backup-file-info{flex:1;min-width:0;}
+.backup-file-name{font-size:12.5px;font-weight:600;word-break:break-all;color:var(--ink);line-height:1.4;}
+.backup-file-meta{font-size:11px;color:var(--ink-soft);margin-top:2px;}
+.backup-file-item .btn{flex:none;padding:8px 14px;width:auto;font-size:12.5px;}
+
+#privacyModal{z-index:100;}
+.privacy-check{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:var(--ink-soft);margin:16px 0 14px;cursor:pointer;user-select:none;}
+.privacy-check input{width:16px;height:16px;accent-color:var(--accent-deep);cursor:pointer;}
+#confirmModal{z-index:80;}
+.drawer{position:fixed;inset:0;z-index:90;visibility:hidden;pointer-events:none;}
+.drawer.open{visibility:visible;pointer-events:auto;}
+.drawer-backdrop{position:absolute;inset:0;background:rgba(75,68,83,.35);backdrop-filter:blur(3px);opacity:0;transition:opacity .24s;}
+.drawer.open .drawer-backdrop{opacity:1;}
+.drawer-card{position:absolute;top:0;right:0;bottom:0;width:100%;max-width:400px;background:#fff;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .26s cubic-bezier(.4,0,.2,1);box-shadow:-10px 0 40px rgba(80,60,40,.18);border-radius:22px 0 0 22px;}
+.drawer.open .drawer-card{transform:none;}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 14px;border-bottom:1px solid var(--line);flex:none;}
+.drawer-body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:16px 20px 34px;}
+.faq-item{margin-bottom:18px;}
+.faq-q{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--ink);line-height:1.5;}
+.faq-a{font-size:13px;color:#6B6472;line-height:1.8;}
+.faq-a ul{padding-left:18px;margin-top:4px;}
+.faq-a li{margin-bottom:4px;}
+.faq-tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:6px;background:#F2ECE5;color:var(--accent-deep);margin-right:5px;}
+.faq-contact{margin-top:22px;padding-top:16px;border-top:1px dashed var(--line);text-align:center;font-size:13px;color:var(--ink-soft);line-height:1.9;}
+.email-text{color:var(--accent-deep);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:1px 4px;border-radius:6px;transition:.12s;word-break:break-all;}
+.email-text:hover{background:#F3ECE4;}
+.copy-hint{font-size:11.5px;color:#B8B1BA;}
+#toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,12px);background:rgba(75,68,83,.94);color:#fff;font-size:13px;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:200;max-width:80vw;text-align:center;line-height:1.5;}
+#toast.show{opacity:1;transform:translate(-50%,0);}
 @keyframes pop{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
 @keyframes slideUp{from{opacity:0;transform:translateY(18px) scale(.98);}to{opacity:1;transform:none;}}
-@media(max-width:840px){
-  .grid{grid-template-columns:1fr;}
-  #fab{right:18px;bottom:18px;}
+@media(max-width:840px){.grid{grid-template-columns:1fr;}#fab{right:18px;bottom:18px;}}
+@media(max-width:480px){
+  .app-actions{gap:8px;}
+  .circle-btn{width:34px;height:34px;font-size:15px;}
+  .app h1{font-size:19px;}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="app">
-    <div class="logo">🌱</div>
-    <div class="title">
-      <h1>情绪树洞</h1>
-      <p>把情绪写下来，然后轻轻放下。</p>
-    </div>
-    <button class="undobtn" id="undoBtn" disabled>↩ 撤回</button>
-    <button class="backupbtn" id="backupBtn" aria-label="数据备份" title="数据备份">💾</button>
-  </header>
 
+  <!-- 最上方一行：右侧小问号 -->
+  <div class="topbar">
+    <button class="help-mini" id="helpBtn" title="问题与解答" aria-label="问题与解答">?</button>
+  </div>
+
+  <header class="app">
+    <div class="app-left">
+      <div class="logo">🌱</div>
+      <div class="title"><h1>情绪树洞</h1><p>把情绪写下来，然后轻轻放下。</p></div>
+    </div>
+    <div class="app-actions">
+      <button class="undobtn" id="undoBtn" disabled>↩ 撤回</button>
+      <button class="circle-btn" id="settingsBtn" title="情绪设置" aria-label="情绪设置">⚙️</button>
+      <button class="circle-btn" id="backupBtn" title="备份数据" aria-label="备份数据">☁️</button>
+    </div>
+  </header>
   <div class="grid">
     <section class="panel main">
       <div class="datebar">
-        <button class="navbtn" id="prevDay" aria-label="前一天">‹</button>
-        <div class="dateinfo">
-          <div id="dateBig"></div>
-          <div id="dateSub"></div>
-        </div>
+        <button class="navbtn" id="prevDay">‹</button>
+        <div class="dateinfo"><div id="dateBig"></div><div id="dateSub"></div></div>
         <button class="todaybtn" id="todayBtn">回到今天</button>
-        <button class="navbtn" id="nextDay" aria-label="后一天">›</button>
+        <button class="navbtn" id="nextDay">›</button>
       </div>
       <div class="list" id="dayList"></div>
     </section>
-
     <aside class="side">
       <section class="panel">
-        <div class="cal-head">
-          <button id="calPrev">‹</button>
-          <div id="calTitle"></div>
-          <button id="calNext">›</button>
-        </div>
+        <div class="cal-head"><button id="calPrev">‹</button><div id="calTitle"></div><button id="calNext">›</button></div>
         <div class="cal-week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
         <div class="cal-grid" id="calGrid"></div>
-        <div class="cal-legend"><span>少</span><i style="background:#F2E6D8"></i><i style="background:#E6CBAE"></i><i style="background:#D3A87B"></i><span>多（当日记录次数）</span></div>
+        <div class="cal-legend"><span>少</span><i style="background:#F2E6D8"></i><i style="background:#E6CBAE"></i><i style="background:#D3A87B"></i><span>多（次数）</span></div>
       </section>
-
       <section class="panel">
-        <div class="stats-tabs">
-          <button class="tab active" data-range="week">周统计</button>
-          <button class="tab" data-range="month">月统计</button>
-        </div>
+        <div class="stats-tabs"><button class="tab active" data-range="week">周统计</button><button class="tab" data-range="month">月统计</button></div>
         <div id="statsBody"></div>
       </section>
     </aside>
   </div>
 </div>
+<button id="fab">+</button>
 
-<button id="fab" aria-label="记录此刻">+</button>
-
+<!-- 记录弹窗 -->
 <div class="modal" id="modal">
   <div class="modal-backdrop" id="modalBackdrop"></div>
   <div class="modal-card">
     <div class="modal-head"><h2 id="modalTitle">记录此刻</h2><button class="close" id="closeBtn">✕</button></div>
     <div class="field"><label>开始时间</label><input type="time" id="startInput"></div>
     <div class="field"><label>结束时间</label><input type="time" id="endInput"></div>
-    <div class="field"><label>情绪</label>
-      <div class="emo-row">
-        <button class="emo-btn" data-emotion="开心">😄 开心</button>
-        <button class="emo-btn" data-emotion="平静">🍃 平静</button>
-        <button class="emo-btn" data-emotion="期待">✨ 期待</button>
-        <button class="emo-btn" data-emotion="疲惫">🥱 疲惫</button>
-        <button class="emo-btn" data-emotion="焦虑">💭 焦虑</button>
-        <button class="emo-btn" data-emotion="委屈">🥺 委屈</button>
-        <button class="emo-btn" data-emotion="生气">😾 生气</button>
-        <button class="emo-btn" data-emotion="难过">🌧️ 难过</button>
+    <div class="field"><label>情绪（可多选）</label>
+      <div class="emo-row" id="emotionRow"></div>
+      <div class="emo-more-row">
+        <button class="btn ghost small" id="toggleEmotionBtn" style="display:none;">展开更多</button>
+        <button class="btn ghost small" id="addEmotionInlineBtn">+ 自定义情绪</button>
       </div>
     </div>
     <div class="field"><label>触发原因</label><textarea id="reasonInput" rows="3" placeholder="是什么触发了这个情绪呢？（选填）"></textarea></div>
@@ -202,55 +255,198 @@ body{
   </div>
 </div>
 
+<!-- 备份与恢复弹窗 -->
 <div class="modal" id="backupModal">
   <div class="modal-backdrop" id="backupBackdrop"></div>
   <div class="modal-card">
     <div class="modal-head"><h2>备份与恢复</h2><button class="close" id="backupCloseBtn">✕</button></div>
-    <div class="field"><label>导出备份（复制下方内容保存）</label><textarea id="backupExportArea" rows="4" readonly></textarea></div>
-    <div class="modal-actions" style="margin-bottom:16px;"><button class="btn ghost" id="genBackupBtn">生成备份</button><button class="btn ghost" id="copyBackupBtn">复制</button></div>
-    <div class="field"><label>导入恢复（粘贴之前备份的内容，将全量覆盖）</label><textarea id="backupImportArea" rows="4"></textarea></div>
-    <div class="modal-actions"><button class="btn primary" id="doImportBtn">导入恢复</button></div>
+    <div class="field"><label>导出备份</label><textarea id="backupExportArea" rows="4" readonly></textarea></div>
+    <div class="modal-actions" style="margin-bottom:12px;">
+      <button class="btn ghost small" id="genBackupBtn">生成备份</button>
+      <button class="btn ghost small" id="copyBackupBtn">复制</button>
+      <button class="btn primary small" id="exportFileBtn">导出文件</button>
+    </div>
+    <div id="backupFilesArea" style="display:none;margin-bottom:16px;">
+      <div style="font-size:12.5px;color:var(--ink-soft);font-weight:600;margin-bottom:8px;">已生成的备份文件</div>
+      <div id="backupFilesList"></div>
+      <p style="font-size:11px;color:var(--ink-soft);line-height:1.7;margin-top:8px;">文件保存位置：iPhone 在「文件」App →「下载」；安卓在「下载」目录。若点击下载无反应，iPhone 请用 Safari 标签页打开本页重试，安卓请用 Chrome 浏览器打开；也可使用「复制」保存备份内容。</p>
+    </div>
+    <div class="field"><label>导入恢复（全量覆盖当前记录）</label><textarea id="backupImportArea" rows="4" placeholder="粘贴备份内容，或点击下方按钮选择 .json 文件"></textarea></div>
+    <input type="file" id="fileInput" accept=".json,application/json" style="display:none">
+    <div class="modal-actions" style="margin-bottom:10px;">
+      <button class="btn ghost small" id="pickFileBtn">选择备份文件</button>
+      <button class="btn primary small" id="doImportBtn">导入恢复</button>
+    </div>
+    <p style="font-size:11.5px;color:var(--ink-soft);line-height:1.7;">微信 / QQ 等内置浏览器可能拦截文件下载，若「导出文件」无反应，请改用「复制」保存；恢复时也可直接粘贴内容。所有解析均在本机完成，不会上传服务器。</p>
   </div>
 </div>
 
+<!-- 情绪设置弹窗 -->
+<div class="modal" id="settingsModal">
+  <div class="modal-backdrop" id="settingsBackdrop"></div>
+  <div class="modal-card" style="max-width:480px;">
+    <div class="modal-head"><h2>情绪设置</h2><button class="close" id="settingsCloseBtn">✕</button></div>
+    <div style="display:flex;gap:8px;margin-bottom:14px;">
+      <button class="btn ghost small" id="addCustomEmotionBtn" style="flex:1;">+ 新增自定义情绪</button>
+      <button class="btn ghost small" id="refreshEmotionsBtn" style="flex:1;">刷新</button>
+      <button class="btn ghost small" id="undoEmotionBtn" style="flex:1;" disabled>↩ 撤回</button>
+    </div>
+    <div id="settingsBody"></div>
+    <p style="font-size:11.5px;color:var(--ink-soft);line-height:1.7;margin-top:12px;">默认情绪仅可修改图标，不可删除；自定义情绪可编辑名称和图标，也可删除。重命名或删除不会影响历史记录中的情绪显示（未找到时显示为灰色）。</p>
+  </div>
+</div>
+
+<!-- 通用输入弹窗 -->
+<div class="modal" id="inputModal">
+  <div class="modal-backdrop" id="inputBackdrop"></div>
+  <div class="modal-card" style="max-width:340px;">
+    <h2 id="inputTitle" style="font-size:17px;font-weight:700;margin-bottom:16px;"></h2>
+    <div id="inputFields"></div>
+    <div class="modal-actions" style="margin-top:18px;">
+      <button class="btn ghost" id="inputCancelBtn">取消</button>
+      <button class="btn primary" id="inputOkBtn">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- 首次隐私提示 -->
+<div class="modal" id="privacyModal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card" style="max-width:380px;">
+    <div style="text-align:center;font-size:38px;line-height:1;margin-bottom:10px;">🔒</div>
+    <h2 style="text-align:center;font-size:17px;font-weight:700;margin-bottom:12px;">关于你的数据</h2>
+    <p style="font-size:13.5px;line-height:1.85;color:#6B6472;background:#FAF6F1;border-radius:14px;padding:14px;">数据仅保存在本地浏览器，清除浏览器缓存后数据会丢失，请定期备份数据。</p>
+    <label class="privacy-check"><input type="checkbox" id="privacyDontRemind"><span>当天不再提醒</span></label>
+    <button class="btn primary" id="privacyOk" style="width:100%;">我知道了</button>
+  </div>
+</div>
+
+<!-- 通用确认弹窗 -->
+<div class="modal" id="confirmModal">
+  <div class="modal-backdrop" id="confirmBackdrop"></div>
+  <div class="modal-card" style="max-width:340px;">
+    <h2 style="font-size:16.5px;font-weight:700;margin-bottom:10px;">请确认</h2>
+    <p id="confirmMsg" style="font-size:13.5px;color:#6B6472;line-height:1.8;margin-bottom:18px;"></p>
+    <div class="modal-actions">
+      <button class="btn ghost" id="confirmCancel">取消</button>
+      <button class="btn primary" id="confirmOk">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ 抽屉 -->
+<div class="drawer" id="helpDrawer">
+  <div class="drawer-backdrop" id="helpBackdrop"></div>
+  <div class="drawer-card">
+    <div class="drawer-head">
+      <h2 style="font-size:17px;font-weight:700;">常见问题</h2>
+      <button class="close" id="helpClose">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div class="faq-item">
+        <div class="faq-q">🔒 我的数据存在哪里？会被上传吗？</div>
+        <div class="faq-a">所有记录只保存在你当前浏览器本地的 LocalStorage 里，不会上传到任何服务器，也不需要注册登录。因此换设备、换浏览器或清除浏览器数据后，记录不会自动同步过来。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">🧹 清除浏览器缓存会怎样？</div>
+        <div class="faq-a">在浏览器设置里执行「清除网站数据 / 清除缓存」会连同记录一起删掉，且无法找回。建议定期点击右上角 ☁️ 图标，用「导出文件」或「复制」保存一份备份。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">📱 无法添加到主屏幕怎么办？</div>
+        <div class="faq-a">
+          <div style="margin-bottom:10px;"><span class="faq-tag">iPhone</span>必须用 <b>Safari 浏览器</b>打开本页面：点击底部中间的「分享」按钮 ⬆️ → 向下滑动找到「添加到主屏幕」→ 点右上角「添加」。如果找不到这个选项，通常是因为正在微信 / QQ 等内置浏览器里打开，请先点「···」选择「在 Safari 中打开」。</div>
+          <div><span class="faq-tag">安卓</span>请用 <b>Chrome 浏览器</b>或系统自带浏览器打开：点击右上角「⋮」菜单 → 选择「添加到主屏幕」或「安装应用」→ 确认即可。部分国产浏览器不提供该选项，建议复制链接到 Chrome 中打开。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">💾 怎么备份和恢复？</div>
+        <div class="faq-a">
+          <ul>
+            <li><b>备份</b>：点右上角 ☁️ → 点「生成备份」→ 再点「导出文件」，会下载一个 JSON 文件；也可以点「复制」，把内容粘贴到备忘录里保存。</li>
+            <li><b>恢复</b>：在同一个弹窗下方点「选择备份文件」选中 JSON 文件，或把内容粘贴进输入框，再点「导入恢复」。</li>
+            <li><b>注意</b>：导入是「全量覆盖」，会替换当前所有记录，导入前会有确认提示。备份文件中已包含你自定义的情绪设置。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">⬇️ 点了「导出文件」没反应？</div>
+        <div class="faq-a">微信、QQ 等内置浏览器可能拦截文件下载。请点右上角「···」选择「在浏览器中打开」后重试；或者直接使用「复制」按钮，把备份内容粘贴保存到备忘录 / 聊天框里，恢复时再粘贴回来即可。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">📲 添加到主屏幕后，点下载备份没反应？</div>
+        <div class="faq-a">
+          <div style="margin-bottom:10px;"><span class="faq-tag">iPhone</span>在「添加到主屏幕」的独立窗口里，部分 iOS 版本会静默拦截文件下载。请改用 <b>Safari 标签页</b>打开本页面，再点右上角 ☁️ →「导出文件」；下载好的文件在「文件」App →「下载」里。</div>
+          <div><span class="faq-tag">安卓</span>在 PWA 独立窗口里下载偶尔也会被拦截。请改用 <b>Chrome 浏览器标签页</b>打开本页重试，文件会保存到「下载」目录。如果仍然不行，用「复制」按钮把备份内容粘贴到备忘录保存，恢复时再粘贴回来即可。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">⚙️ 如何自定义情绪？</div>
+        <div class="faq-a">点击右上角的 ⚙️ 打开情绪设置。默认情绪仅可修改图标；可新增、编辑、删除自定义情绪。主页面记录时，若情绪太多，点击「展开更多」即可看到全部。设置修改后会自动同步到主页面。</div>
+      </div>
+      <div class="faq-contact">
+        仍有问题？联系我：<span class="email-text" id="emailCopy" role="button" tabindex="0" title="点击复制邮箱">2639805728@qq.com</span>
+        <span class="copy-hint">（点击复制）</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
 <script>
 var data = [];
-
 (function(){
   'use strict';
-  var EMOTIONS={
-    '开心':{emoji:'😄', c:'#B88736', bg:'#FCEAD1'},
-    '平静':{emoji:'🍃', c:'#4B755B', bg:'#C5D8C1'},
-    '期待':{emoji:'✨', c:'#6D8CA8', bg:'#DAE5F0'},
-    '焦虑':{emoji:'💭', c:'#8A7153', bg:'#EAE0D3'},
-    '疲惫':{emoji:'🥱', c:'#8C6550', bg:'#EADDD5'},
-    '委屈':{emoji:'🥺', c:'#8A6DA3', bg:'#EEE7F4'},
-    '生气':{emoji:'😾', c:'#AF6A76', bg:'#F3E6E7'},
-    '难过':{emoji:'🌧️', c:'#4C6278', bg:'#E3E8EF'}
-  };
-  var EMPTY_MSGS=[
-    '今天没有任何情绪记录，希望你一整天都开开心心。',
-    '空白的一天，也是一种温柔的胜利。',
-    '今天把日子过得稳稳的，真棒。',
-    '这里空空的，心里暖暖的。'
-  ];
-  var WEEK_LABELS=['一','二','三','四','五','六','日'];
 
-  var selectedDate=fmtDate(new Date());
-  var calYear=new Date().getFullYear();
-  var calMonth=new Date().getMonth();
-  var editingId=null;
-  var selectedEmotion=null;
-  var statsRange='week';
-  var lastAction=null;
+  /* ---------- 默认情绪（18种） ---------- */
+  var DEFAULT_EMOTIONS = [
+    {key:'开心', emoji:'😄', c:'#B88736', bg:'#FCEAD1'},
+    {key:'平静', emoji:'😌', c:'#4B755B', bg:'#C5D8C1'},
+    {key:'满足', emoji:'😊', c:'#8A9A5B', bg:'#E8F0D8'},
+    {key:'喜爱', emoji:'🥰', c:'#C97B84', bg:'#F7E1E3'},
+    {key:'感激', emoji:'🙏', c:'#9A7B4F', bg:'#F0E6D8'},
+    {key:'期待', emoji:'🤩', c:'#6D8CA8', bg:'#DAE5F0'},
+    {key:'焦虑', emoji:'😰', c:'#8A7153', bg:'#EAE0D3'},
+    {key:'生气', emoji:'😠', c:'#AF6A76', bg:'#F3E6E7'},
+    {key:'悲伤', emoji:'😢', c:'#4C6278', bg:'#E3E8EF'},
+    {key:'孤独', emoji:'🫥', c:'#7A8B99', bg:'#E4E9ED'},
+    {key:'委屈', emoji:'🥺', c:'#8A6DA3', bg:'#EEE7F4'},
+    {key:'无助', emoji:'🫠', c:'#B08A6E', bg:'#F0E2D6'},
+    {key:'困惑', emoji:'😕', c:'#8B7E6A', bg:'#EDE8E0'},
+    {key:'害怕', emoji:'😨', c:'#6B5B7B', bg:'#E6E0EE'},
+    {key:'厌恶', emoji:'🤢', c:'#7D8C6A', bg:'#E4EBD9'},
+    {key:'失落', emoji:'😞', c:'#7A6A6A', bg:'#EDE4E4'},
+    {key:'内疚', emoji:'😣', c:'#9A7B8C', bg:'#F0E4EB'},
+    {key:'羞耻', emoji:'😳', c:'#C97B6B', bg:'#F7E3DE'}
+  ];
+
+  var COLOR_PALETTE = [
+    {c:'#B88736', bg:'#FCEAD1'},{c:'#4B755B', bg:'#C5D8C1'},{c:'#6D8CA8', bg:'#DAE5F0'},
+    {c:'#8A7153', bg:'#EAE0D3'},{c:'#8C6550', bg:'#EADDD5'},{c:'#8A6DA3', bg:'#EEE7F4'},
+    {c:'#AF6A76', bg:'#F3E6E7'},{c:'#4C6278', bg:'#E3E8EF'},{c:'#7A8B99', bg:'#E4E9ED'},
+    {c:'#B08A6E', bg:'#F0E2D6'},{c:'#8B7E6A', bg:'#EDE8E0'},{c:'#6B5B7B', bg:'#E6E0EE'},
+    {c:'#7D8C6A', bg:'#E4EBD9'},{c:'#7A6A6A', bg:'#EDE4E4'},{c:'#9A7B8C', bg:'#F0E4EB'},
+    {c:'#C97B6B', bg:'#F7E3DE'}
+  ];
+
+  var EMPTY_MSGS=['今天没有任何情绪记录，希望你一整天都开开心心。','空白的一天，也是一种温柔的胜利。','今天把日子过得稳稳的，真棒。','这里空空的，心里暖暖的。'];
+  var STORAGE_KEY='emotion_tree_hole';
+  var EMOTION_CONFIG_KEY='emotion_tree_hole_emotions';
+  var PRIVACY_KEY='emotion_tree_hole_privacy_date';
+
+  var selectedDate=fmtDate(new Date()), calYear=new Date().getFullYear(), calMonth=new Date().getMonth();
+  var editingId=null, statsRange='week', lastAction=null, confirmResolve=null, inputCallback=null;
+  var selectedEmotions=new Set();
+  var pickerExpanded=false;
+  var lastEmotionAction=null;
+  var emotionConfig={custom:[], overrides:{}};
+  var generatedBackupFiles = [];
 
   var $=function(id){return document.getElementById(id);};
-  var dateBig=$('dateBig'),dateSub=$('dateSub'),dayList=$('dayList');
-  var calTitle=$('calTitle'),calGrid=$('calGrid'),statsBody=$('statsBody');
-  var modal=$('modal'),startInput=$('startInput'),endInput=$('endInput');
-  var reasonInput=$('reasonInput'),formError=$('formError'),modalTitle=$('modalTitle');
-  var undoBtn=$('undoBtn');
+  var dateBig=$('dateBig'),dateSub=$('dateSub'),dayList=$('dayList'),calTitle=$('calTitle'),calGrid=$('calGrid'),statsBody=$('statsBody');
+  var modal=$('modal'),startInput=$('startInput'),endInput=$('endInput'),reasonInput=$('reasonInput'),formError=$('formError'),modalTitle=$('modalTitle'),undoBtn=$('undoBtn');
 
+  /* ---------- 工具 ---------- */
   function pad(n){return (n<10?'0':'')+n;}
   function fmtDate(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
   function parseDate(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
@@ -260,48 +456,277 @@ var data = [];
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function hash(s){var h=0,i;for(i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;}return Math.abs(h);}
   function dayRecords(d){return data.filter(function(r){return r.date===d;}).sort(function(a,b){return a.startTime<b.startTime?-1:1;});}
-  function dayTotal(d){return dayRecords(d).reduce(function(s,r){return s+(+r.duration||0);},0);}
 
+  /* ---------- Toast（支持自定义停留时长） ---------- */
+  var toastTimer=null;
+  function toast(msg, duration){
+    var t=$('toast');
+    t.textContent=msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){t.classList.remove('show');}, duration||2400);
+  }
+
+  /* ---------- 情绪配置 ---------- */
+  function isDefaultEmotionName(name){
+    return DEFAULT_EMOTIONS.some(function(e){return e.key===name;});
+  }
+  function getAllEmotions(){
+    var list = DEFAULT_EMOTIONS.map(function(def){
+      var override = emotionConfig.overrides[def.key];
+      return {key:def.key, emoji:override||def.emoji, c:def.c, bg:def.bg, isDefault:true};
+    });
+    emotionConfig.custom.forEach(function(c){
+      list.push({key:c.key, emoji:c.emoji, c:c.c, bg:c.bg, isDefault:false});
+    });
+    return list;
+  }
+  function getEmotionByKey(key){
+    var all=getAllEmotions();
+    for(var i=0;i<all.length;i++){ if(all[i].key===key) return all[i]; }
+    return null;
+  }
+  function loadEmotionConfig(){
+    try{
+      var raw=localStorage.getItem(EMOTION_CONFIG_KEY);
+      if(raw){
+        var v=JSON.parse(raw);
+        emotionConfig.custom = Array.isArray(v.custom)?v.custom:[];
+        emotionConfig.overrides = (v.overrides && typeof v.overrides==='object')?v.overrides:{};
+      }
+    }catch(e){}
+  }
+  function saveEmotionConfig(){
+    try{ localStorage.setItem(EMOTION_CONFIG_KEY, JSON.stringify(emotionConfig)); }catch(e){}
+  }
+
+  /* ---------- 数据加载与迁移（原生 localStorage，保持不变） ---------- */
   function loadData(){
-    var raw=null;
-    try{raw=localStorage.getItem('emotion_tree_hole');}catch(e){}
-    if(raw){try{var v=JSON.parse(raw);if(Array.isArray(v)){data=v;}}catch(e){data=[];}}
-    else{data=[];}
+    var raw=null; try{raw=localStorage.getItem(STORAGE_KEY);}catch(e){}
+    if(raw){try{var v=JSON.parse(raw);if(Array.isArray(v)){data=v;}}catch(e){data=[];}} else{data=[];}
     return Promise.resolve();
   }
-  function saveData(){
-    try{localStorage.setItem('emotion_tree_hole',JSON.stringify(data));}catch(e){}
-    return Promise.resolve();
+  function saveData(){ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data));}catch(e){} return Promise.resolve(); }
+  function migrateData(){
+    var changed=false;
+    data.forEach(function(r){
+      if(r.emotion && !r.emotions){
+        r.emotions=[r.emotion]; delete r.emotion; changed=true;
+      } else if(r.emotions && !Array.isArray(r.emotions)){
+        r.emotions=[r.emotions]; changed=true;
+      }
+    });
+    if(changed) saveData();
   }
 
+  /* ---------- 首次隐私提示 ---------- */
+  function initPrivacy(){
+    var saved=null;
+    try{saved=localStorage.getItem(PRIVACY_KEY);}catch(e){}
+    if(saved===todayStr()) return;
+    $('privacyModal').classList.add('open');
+  }
+  $('privacyOk').onclick=function(){
+    try{
+      if($('privacyDontRemind').checked){ localStorage.setItem(PRIVACY_KEY, todayStr()); }
+      else{ localStorage.removeItem(PRIVACY_KEY); }
+    }catch(e){}
+    $('privacyModal').classList.remove('open');
+  };
+
+  /* ---------- 通用确认弹窗 ---------- */
+  function askConfirm(msg, cb){
+    $('confirmMsg').textContent=msg;
+    $('confirmModal').classList.add('open');
+    confirmResolve=cb;
+  }
+  function closeConfirm(ok){
+    $('confirmModal').classList.remove('open');
+    var f=confirmResolve; confirmResolve=null;
+    if(f) f(ok);
+  }
+  $('confirmOk').onclick=function(){closeConfirm(true);};
+  $('confirmCancel').onclick=function(){closeConfirm(false);};
+  $('confirmBackdrop').onclick=function(){closeConfirm(false);};
+
+  /* ---------- 通用输入弹窗 ---------- */
+  function openInputDialog(title, fields, callback){
+    $('inputTitle').textContent=title;
+    var container=$('inputFields');
+    container.innerHTML=fields.map(function(f,i){
+      return '<div class="field"><label>'+esc(f.label)+'</label><input type="'+(f.type||'text')+'" id="inputField'+i+'" value="'+esc(f.value||'')+'" placeholder="'+esc(f.placeholder||'')+'" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:15px;font-family:inherit;background:#FBF8F4;color:var(--ink);"></div>';
+    }).join('');
+    inputCallback=callback;
+    $('inputModal').classList.add('open');
+  }
+  $('inputOkBtn').onclick=function(){
+    var inputs=$('inputFields').querySelectorAll('input');
+    var values=[];
+    for(var i=0;i<inputs.length;i++) values.push(inputs[i].value.trim());
+    var cb=inputCallback; inputCallback=null;
+    $('inputModal').classList.remove('open');
+    if(cb) cb(values);
+  };
+  $('inputCancelBtn').onclick=function(){ inputCallback=null; $('inputModal').classList.remove('open'); };
+  $('inputBackdrop').onclick=function(){ inputCallback=null; $('inputModal').classList.remove('open'); };
+
+  /* ---------- 备份与恢复（含情绪设置） ---------- */
+  function buildBackup(){
+    return { version:2, records:data, emotions:{custom:emotionConfig.custom, overrides:emotionConfig.overrides} };
+  }
   function openBackup(){
     $('backupModal').classList.add('open');
-    $('backupExportArea').value=JSON.stringify(data);
+    $('backupExportArea').value=JSON.stringify(buildBackup());
+    $('backupImportArea').value='';
+    renderBackupFiles();
   }
   function closeBackup(){ $('backupModal').classList.remove('open'); }
-  function genBackup(){ $('backupExportArea').value=JSON.stringify(data); }
+  function genBackup(){
+    $('backupExportArea').value=JSON.stringify(buildBackup());
+    toast('备份内容已生成，可复制或导出文件');
+  }
   function copyBackup(){
-    var text=$('backupExportArea').value||JSON.stringify(data);
-    var fallback=function(){$('backupExportArea').select();try{document.execCommand('copy');}catch(e){}alert('请手动复制文本框中的内容');};
+    var text=$('backupExportArea').value||JSON.stringify(buildBackup());
+    var fallback=function(){
+      var area=$('backupExportArea');
+      area.removeAttribute('readonly');
+      area.select();
+      area.setSelectionRange(0, area.value.length);
+      try{document.execCommand('copy');}catch(e){}
+      area.setAttribute('readonly','readonly');
+      toast('已复制，请粘贴到备忘录保存');
+    };
     if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(function(){alert('已复制到剪贴板');}).catch(fallback);
-    }else{fallback();}
+      navigator.clipboard.writeText(text)
+        .then(function(){toast('已复制到剪贴板');})
+        .catch(fallback);
+    }else{ fallback(); }
+  }
+  /* 导出为本地 .json 文件，并加入文件列表 */
+  function exportFile(){
+    var text = JSON.stringify(buildBackup());
+    var now = new Date();
+    var timeStr = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate()) + '_' + pad(now.getHours()) + '-' + pad(now.getMinutes());
+    var fileName = '情绪树洞备份-' + timeStr + '.json';
+    try{
+      var blob = new Blob([text], {type:'application/json;charset=utf-8'});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      $('backupExportArea').value = text;
+      generatedBackupFiles.unshift({
+        name: fileName,
+        size: blob.size,
+        url: url,
+        time: now.getTime()
+      });
+      renderBackupFiles();
+      toast('已生成备份文件，可在下方列表再次下载');
+    }catch(e){
+      toast('下载未触发。iPhone 请用 Safari 标签页打开本页重试，安卓请用 Chrome 浏览器打开；也可点「复制」保存备份内容', 6000);
+    }
+  }
+  /* 渲染已生成的备份文件列表 */
+  function renderBackupFiles(){
+    var area = $('backupFilesArea');
+    var list = $('backupFilesList');
+    if(generatedBackupFiles.length === 0){
+      area.style.display = 'none';
+      list.innerHTML = '';
+      return;
+    }
+    area.style.display = 'block';
+    var html = '';
+    generatedBackupFiles.forEach(function(f, idx){
+      var sizeKB = (f.size / 1024).toFixed(1);
+      html += '<div class="backup-file-item">'+
+        '<div class="backup-file-info">'+
+          '<div class="backup-file-name">'+esc(f.name)+'</div>'+
+          '<div class="backup-file-meta">'+sizeKB+' KB</div>'+
+        '</div>'+
+        '<button class="btn ghost small" data-dl-index="'+idx+'">下载</button>'+
+      '</div>';
+    });
+    list.innerHTML = html;
+    var btns = list.querySelectorAll('[data-dl-index]');
+    for(var i=0;i<btns.length;i++){
+      btns[i].onclick = function(){
+        var idx = parseInt(this.getAttribute('data-dl-index'), 10);
+        var f = generatedBackupFiles[idx];
+        if(!f) return;
+        try{
+          var a = document.createElement('a');
+          a.href = f.url;
+          a.download = f.name;
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          toast('正在下载：'+f.name);
+        }catch(e){
+          toast('下载失败。iPhone 请用 Safari 标签页打开本页重试，安卓请用 Chrome 浏览器打开；也可使用「复制」保存', 6000);
+        }
+      };
+    }
   }
   function doImport(){
     var s=$('backupImportArea').value.trim();
-    if(!s){alert('请先粘贴备份内容');return;}
-    try{
-      var v=JSON.parse(s);
-      if(!Array.isArray(v)){alert('数据格式不正确，需要是数组');return;}
-      data=v;
-      saveData().then(function(){renderAll();closeBackup();alert('导入成功，共 '+data.length+' 条');});
-    }catch(e){alert('JSON 解析失败：'+e.message);}
-  }
+    if(!s){ toast('请先粘贴备份内容，或选择备份文件'); return; }
+    var v;
+    try{ v=JSON.parse(s.replace(/^\uFEFF/,'')); }
+    catch(e){ toast('JSON 解析失败：'+e.message); return; }
 
+    var records, emotions;
+    if(Array.isArray(v)){
+      records=v; emotions=null;
+    }else if(v && typeof v==='object' && Array.isArray(v.records)){
+      records=v.records; emotions=v.emotions||null;
+    }else{
+      toast('数据格式不正确，需要是数组或包含 records 的对象'); return;
+    }
+    askConfirm('确认用这份备份覆盖当前全部记录？', function(ok){
+      if(!ok) return;
+      data=records;
+      if(emotions){
+        emotionConfig.custom=Array.isArray(emotions.custom)?emotions.custom:[];
+        emotionConfig.overrides=(emotions.overrides && typeof emotions.overrides==='object')?emotions.overrides:{};
+        saveEmotionConfig();
+      }
+      migrateData();
+      saveData().then(function(){
+        renderAll();
+        renderSettings();
+        renderEmotionPicker();
+        closeBackup();
+        toast('导入成功，共 '+data.length+' 条记录');
+      });
+    });
+  }
+  function pickFile(){ $('fileInput').click(); }
+  $('fileInput').onchange=function(e){
+    var f=e.target.files&&e.target.files[0];
+    e.target.value='';
+    if(!f) return;
+    var reader=new FileReader();
+    reader.onload=function(){
+      $('backupImportArea').value=String(reader.result||'');
+      doImport();
+    };
+    reader.onerror=function(){ toast('文件读取失败，请改用粘贴方式'); };
+    reader.readAsText(f,'UTF-8');
+  };
+
+  /* ---------- 撤回（记录操作） ---------- */
   function pushAction(a){lastAction=a;updateUndo();}
   function updateUndo(){undoBtn.disabled=!lastAction;}
   function clearAction(){lastAction=null;updateUndo();}
 
+  /* ---------- 渲染：日记录 ---------- */
   function renderDayList(){
     var d=parseDate(selectedDate);
     dateBig.textContent=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';
@@ -313,105 +738,93 @@ var data = [];
       dayList.innerHTML='<div class="empty"><div class="empty-emoji">🌿</div><div class="empty-text">'+EMPTY_MSGS[idx]+'</div></div>';
       return;
     }
-    dayList.innerHTML=recs.map(recHTML).join('');
+    dayList.innerHTML=recs.map(function(r){
+      var emos=r.emotions||[];
+      var tagsHtml=emos.map(function(emo){
+        var e=getEmotionByKey(emo)||{emoji:'❓',c:'#9A93A0',bg:'#F0F0F0'};
+        return '<span class="rec-tag" style="background:'+e.bg+';color:'+e.c+';">'+e.emoji+' '+esc(emo)+'</span>';
+      }).join('');
+      return '<div class="rec" data-id="'+esc(r.id)+'">'+
+        '<div class="rec-body">'+
+          '<div class="rec-tags">'+tagsHtml+'</div>'+
+          '<div class="rec-time">'+esc(r.startTime)+' – '+esc(r.endTime)+'</div>'+
+          (r.reason?'<div class="rec-reason">'+esc(r.reason)+'</div>':'<div class="rec-reason muted">（未填写原因）</div>')+
+        '</div><div class="rec-actions">'+
+          '<button class="iconbtn" data-act="edit">✎</button>'+
+          '<button class="iconbtn del" data-act="del"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>'+
+        '</div></div>';
+    }).join('');
   }
 
-  function recHTML(r){
-    var e=EMOTIONS[r.emotion]||EMOTIONS['难过'];
-    return '<div class="rec" data-id="'+esc(r.id)+'">'+
-      '<span class="rec-tag" style="background:'+e.bg+';color:'+e.c+'"><span>'+e.emoji+'</span>'+esc(r.emotion)+'</span>'+
-      '<div class="rec-body">'+
-        '<div class="rec-time">'+esc(r.startTime)+' – '+esc(r.endTime)+'</div>'+
-        (r.reason?'<div class="rec-reason">'+esc(r.reason)+'</div>':'<div class="rec-reason muted">（未填写原因）</div>')+
-      '</div>'+
-      '<div class="rec-actions">'+
-        '<button class="iconbtn" data-act="edit" aria-label="编辑">✎</button>'+
-        '<button class="iconbtn del" data-act="del" aria-label="删除"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>'+
-      '</div>'+
-    '</div>';
-  }
-
+  /* ---------- 渲染：日历 ---------- */
   function renderCalendar(){
     calTitle.textContent=calYear+'年'+(calMonth+1)+'月';
-    var startDow=new Date(calYear,calMonth,1).getDay();
-    var daysInMonth=new Date(calYear,calMonth+1,0).getDate();
-    var html='',i,d,ds,tot,lvl,cls;
+    var startDow=new Date(calYear,calMonth,1).getDay(), daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+    var html='',i,d,ds,recs,lvl,cls;
     for(i=0;i<startDow;i++){html+='<div class="cal-cell empty"></div>';}
     for(d=1;d<=daysInMonth;d++){
-      ds=fmtDate(new Date(calYear,calMonth,d));
-      var recs=dayRecords(ds);
-      lvl=recs.length;
-      if(lvl>3) lvl=3;
-      cls='cal-cell';
-      if(lvl>0){cls+=' lvl'+lvl;}
-      if(ds===selectedDate){cls+=' sel';}
-      if(ds===todayStr()){cls+=' today';}
+      ds=fmtDate(new Date(calYear,calMonth,d)); recs=dayRecords(ds); lvl=recs.length; if(lvl>3) lvl=3;
+      cls='cal-cell'; if(lvl>0){cls+=' lvl'+lvl;} if(ds===selectedDate){cls+=' sel';} if(ds===todayStr()){cls+=' today';}
       html+='<div class="'+cls+'" data-date="'+ds+'">'+d+'</div>';
     }
     calGrid.innerHTML=html;
   }
 
-  function createPieChart(recs){
+  /* ---------- 渲染：统计图表 ---------- */
+  function collectEmotionCounts(recs){
     var counts={};
-    var total=recs.length;
+    recs.forEach(function(r){
+      (r.emotions||[]).forEach(function(emo){
+        counts[emo]=(counts[emo]||0)+1;
+      });
+    });
+    return counts;
+  }
+  function createPieChart(recs){
+    var counts=collectEmotionCounts(recs);
+    var keys=Object.keys(counts);
+    var total=keys.reduce(function(s,k){return s+counts[k];},0);
     if(total===0) return '<div style="text-align:center;color:#9A93A0;font-size:12px;padding:20px 0;">暂无数据</div>';
-    
-    recs.forEach(function(r){ counts[r.emotion]=(counts[r.emotion]||0)+1; });
-    
-    var r=50, cx=60, cy=60, circumference=2*Math.PI*r;
-    var offset=0;
-    var paths='';
-    
-    for(var emo in counts){
-      var percent=counts[emo]/total;
-      var strokeDash=percent*circumference;
-      var color=EMOTIONS[emo]?EMOTIONS[emo].c:'#ccc';
-      paths+='<circle r="'+r+'" cx="'+cx+'" cy="'+cy+'" fill="transparent" stroke="'+color+'" stroke-width="20" stroke-dasharray="'+strokeDash+' '+circumference+'" stroke-dashoffset="'+(-offset)+'" transform="rotate(-90 '+cx+' '+cy+')"></circle>';
+    var r=50, cx=60, cy=60, circumference=2*Math.PI*r, offset=0, paths='';
+    keys.forEach(function(emo){
+      var percent=counts[emo]/total, strokeDash=percent*circumference;
+      var e=getEmotionByKey(emo)||{c:'#ccc'};
+      paths+='<circle r="'+r+'" cx="'+cx+'" cy="'+cy+'" fill="transparent" stroke="'+e.c+'" stroke-width="20" stroke-dasharray="'+strokeDash+' '+circumference+'" stroke-dashoffset="'+(-offset)+'" transform="rotate(-90 '+cx+' '+cy+')"></circle>';
       offset+=strokeDash;
-    }
-    
+    });
     var legendHtml='<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:11px;margin-top:8px;">';
-    for(var emo in counts){
-      var color=EMOTIONS[emo]?EMOTIONS[emo].c:'#ccc';
-      legendHtml+='<div style="display:flex;align-items:center;gap:4px;"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:'+color+';"></span>'+emo+' ('+counts[emo]+')</div>';
-    }
+    keys.forEach(function(emo){
+      var e=getEmotionByKey(emo)||{c:'#ccc', emoji:'❓'};
+      legendHtml+='<div style="display:flex;align-items:center;gap:4px;"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:'+e.c+';"></span>'+e.emoji+' '+esc(emo)+' ('+counts[emo]+')</div>';
+    });
     legendHtml+='</div>';
-
     return '<svg viewBox="0 0 120 120" style="width:100%;max-width:160px;display:block;margin:0 auto;">'+paths+'</svg>'+legendHtml;
   }
-
   function createBarChart(recs){
-    var counts={};
-    var total=recs.length;
-    if(total===0) return '<div style="text-align:center;color:#9A93A0;font-size:12px;padding:20px 0;">暂无数据</div>';
-    
-    recs.forEach(function(r){ counts[r.emotion]=(counts[r.emotion]||0)+1; });
-    
-    var emos=Object.keys(EMOTIONS);
-    var maxCount=Math.max.apply(null,emos.map(function(e){return counts[e]||0;}).concat([1]));
-    var width=233, height=80, bw=width/(emos.length*1.5);
+    var counts=collectEmotionCounts(recs);
+    var items=Object.keys(counts).map(function(k){return {emo:k, count:counts[k]};}).sort(function(a,b){return b.count-a.count;});
+    if(items.length===0) return '<div style="text-align:center;color:#9A93A0;font-size:12px;padding:20px 0;">暂无数据</div>';
+    var maxShow=12;
+    var note='';
+    if(items.length>maxShow){ items=items.slice(0,maxShow); note='（仅显示前12种）'; }
+    var maxCount=Math.max.apply(null, items.map(function(x){return x.count;}).concat([1]));
+    var width=233, n=items.length, gap=4, bw=(width-(n+1)*gap)/n;
+    if(bw<6) bw=6;
     var bars='';
-    
-    for(var i=0; i<emos.length; i++){
-      var emo=emos[i];
-      var c=counts[emo]||0;
-      var h=Math.max(1, Math.round(c/maxCount*50));
-      var x=i*(bw+ (width-bw*emos.length)/emos.length) + (width-bw*emos.length)/(emos.length*2);
-      var color=EMOTIONS[emo].c;
-      bars+='<rect x="'+x+'" y="'+(65-h)+'" width="'+bw+'" height="'+h+'" rx="3" fill="'+color+'"></rect>';
-      bars+='<text x="'+(x+bw/2)+'" y="78" text-anchor="middle" font-size="8" fill="#9A93A0">'+EMOTIONS[emo].emoji+'</text>';
-      if(c>0) bars+='<text x="'+(x+bw/2)+'" y="'+(62-h)+'" text-anchor="middle" font-size="8" fill="'+color+'">'+c+'</text>';
-    }
-    return '<svg viewBox="0 0 233 85" style="width:100%;height:auto;display:block;">'+bars+'</svg>';
+    items.forEach(function(item,i){
+      var x=gap+i*(bw+gap);
+      var h=Math.max(1, Math.round(item.count/maxCount*50));
+      var e=getEmotionByKey(item.emo)||{c:'#9A93A0', emoji:'❓'};
+      bars+='<rect x="'+x+'" y="'+(65-h)+'" width="'+bw+'" height="'+h+'" rx="3" fill="'+e.c+'"></rect>';
+      bars+='<text x="'+(x+bw/2)+'" y="78" text-anchor="middle" font-size="8" fill="#9A93A0">'+e.emoji+'</text>';
+      if(item.count>0) bars+='<text x="'+(x+bw/2)+'" y="'+(62-h)+'" text-anchor="middle" font-size="8" fill="'+e.c+'">'+item.count+'</text>';
+    });
+    return '<div style="font-size:10px;color:var(--ink-soft);text-align:center;margin-bottom:2px;">'+note+'</div><svg viewBox="0 0 233 85" style="width:100%;height:auto;display:block;">'+bars+'</svg>';
   }
-
   function renderStats(){
-    var d=parseDate(selectedDate);
-    var recs=[];
-    
+    var d=parseDate(selectedDate), recs=[];
     if(statsRange==='week'){
-      var dow=(d.getDay()+6)%7;
-      var mon=new Date(d);mon.setDate(d.getDate()-dow);
+      var dow=(d.getDay()+6)%7, mon=new Date(d);mon.setDate(d.getDate()-dow);
       var days=[],i,x;
       for(i=0;i<7;i++){x=new Date(mon);x.setDate(mon.getDate()+i);days.push(fmtDate(x));}
       recs=data.filter(function(r){return days.indexOf(r.date)>=0;});
@@ -419,157 +832,353 @@ var data = [];
       var ym=selectedDate.slice(0,7);
       recs=data.filter(function(r){return (r.date||'').indexOf(ym)===0;});
     }
-
-    var cnt=recs.length;
-    var counts={};
-    recs.forEach(function(r){ counts[r.emotion]=(counts[r.emotion]||0)+1; });
-    
-    var maxEmo="无";
-    var maxC=0;
-    for(var e in counts){
-      if(counts[e]>maxC){ maxC=counts[e]; maxEmo=e; }
-    }
-
-    var topText = cnt > 0 ? (EMOTIONS[maxEmo]?EMOTIONS[maxEmo].emoji:'') + maxEmo : '无';
-
-    // 排版修改在这里
+    var counts=collectEmotionCounts(recs);
+    var cnt=recs.length, maxEmo='无', maxC=0, e;
+    for(e in counts){ if(counts[e]>maxC){ maxC=counts[e]; maxEmo=e; } }
+    var topEmoObj=getEmotionByKey(maxEmo);
+    var topText = cnt>0 && maxEmo!=='无' ? ((topEmoObj?topEmoObj.emoji:'❓')+' '+maxEmo) : '无';
     var metrics = '<div class="metric-row">'+
-      '<div class="metric">'+
-        '<div class="m-label">记录次数</div>'+
-        '<div class="m-num">'+cnt+'</div>'+
-        '<div class="m-unit">次</div>'+
-      '</div>'+
-      '<div class="metric">'+
-        '<div class="m-label">最高频情绪</div>'+
-        '<div class="m-num" style="font-size:18px;">'+topText+'</div>'+
-      '</div>'+
+      '<div class="metric"><div class="m-label">记录次数</div><div class="m-num">'+cnt+'</div><div class="m-unit">次</div></div>'+
+      '<div class="metric"><div class="m-label">最高频情绪</div><div class="m-num" style="font-size:18px;">'+topText+'</div></div>'+
     '</div>';
-
-    var pieSection = '<div class="chart-wrap"><div class="chart-title">情绪占比</div>'+createPieChart(recs)+'</div>';
-    var barSection = '<div class="chart-wrap"><div class="chart-title">各情绪次数明细</div>'+createBarChart(recs)+'</div>';
-
-    statsBody.innerHTML = metrics + pieSection + barSection;
+    statsBody.innerHTML = metrics +
+      '<div class="chart-wrap"><div class="chart-title">情绪占比</div>'+createPieChart(recs)+'</div>' +
+      '<div class="chart-wrap"><div class="chart-title">各情绪次数明细</div>'+createBarChart(recs)+'</div>';
   }
 
   function renderAll(){renderDayList();renderCalendar();renderStats();}
 
+  /* ---------- 情绪选择器（记录表单） ---------- */
+  function renderEmotionPicker(){
+    var emotions=getAllEmotions();
+    var row=$('emotionRow');
+    var toggle=$('toggleEmotionBtn');
+    var showAll=pickerExpanded;
+    var list=showAll?emotions:emotions.slice(0,8);
+    row.innerHTML=list.map(function(em){
+      var active=selectedEmotions.has(em.key)?' active':'';
+      return '<button type="button" class="emo-btn'+active+'" data-emotion="'+esc(em.key)+'" style="--ec:'+em.c+';background:'+em.bg+';color:'+em.c+';">'+em.emoji+' '+esc(em.key)+'</button>';
+    }).join('');
+    if(emotions.length>8){
+      toggle.style.display='block';
+      toggle.textContent=showAll?'收起':'展开更多（共'+emotions.length+'种）';
+    }else{
+      toggle.style.display='none';
+    }
+  }
+
+  /* ---------- 记录表单 ---------- */
   function openForm(rec){
     editingId=rec?rec.id:null;
     modalTitle.textContent=rec?'编辑记录':'记录此刻';
+    selectedEmotions=new Set(rec?(rec.emotions||[]):[]);
+    pickerExpanded=false;
     if(rec){
       startInput.value=rec.startTime||'';
       endInput.value=rec.endTime||'';
-      selectEmotion(rec.emotion);
       reasonInput.value=rec.reason||'';
     }else{
       var now=new Date();
       startInput.value=pad(now.getHours())+':'+pad(now.getMinutes());
       var eh=new Date(now.getTime()+3600000);
       endInput.value=pad(eh.getHours())+':'+pad(eh.getMinutes());
-      selectEmotion(null);
       reasonInput.value='';
     }
     formError.textContent='';
+    renderEmotionPicker();
     modal.classList.add('open');
   }
-
-  function selectEmotion(key){
-    selectedEmotion=key;
-    var btns=document.querySelectorAll('.emo-btn');
-    for(var i=0;i<btns.length;i++){btns[i].classList.toggle('active',btns[i].getAttribute('data-emotion')===key);}
-  }
-
   function closeForm(){modal.classList.remove('open');}
-
   function saveRecord(){
     var s=startInput.value,e=endInput.value;
     if(!s||!e){formError.textContent='请填写开始时间与结束时间';return;}
-    if(!selectedEmotion){formError.textContent='请选择一种情绪';return;}
+    var emotionsArr=Array.from(selectedEmotions);
+    if(emotionsArr.length===0){formError.textContent='请至少选择一种情绪';return;}
     var dur=calcDuration(s,e);
-    var rec={id:editingId||('e'+Date.now()+Math.random().toString(36).slice(2,7)),date:selectedDate,startTime:s,endTime:e,duration:dur>0?dur:0,emotion:selectedEmotion,reason:reasonInput.value.trim()};
+    var rec={
+      id:editingId||('e'+Date.now()+Math.random().toString(36).slice(2,7)),
+      date:selectedDate,startTime:s,endTime:e,duration:dur>0?dur:0,
+      emotions:emotionsArr,reason:reasonInput.value.trim()
+    };
     if(editingId){
       var i=data.findIndex(function(x){return x.id===editingId;});
       if(i>=0){pushAction({type:'edit',id:rec.id,before:data[i]});data[i]=rec;}
     }else{
-      data.push(rec);
-      pushAction({type:'add',id:rec.id});
+      data.push(rec); pushAction({type:'add',id:rec.id});
     }
-    saveData().then(function(){closeForm();renderAll();});
+    saveData().then(function(){closeForm();renderAll();toast(editingId?'记录已更新':'记录已保存');});
   }
-
-  // 修复了此处：移除了 confirm，直接删除，支持撤回
   function deleteRecord(id){
-    var i=data.findIndex(function(x){return x.id===id;});
-    if(i<0)return;
-    var rec=data[i];
-    data.splice(i,1);
-    pushAction({type:'del',record:rec,index:i});
-    saveData().then(renderAll);
+    var i=data.findIndex(function(x){return x.id===id;}); if(i<0)return;
+    var rec=data[i]; data.splice(i,1); pushAction({type:'del',record:rec,index:i});
+    saveData().then(function(){renderAll();toast('已删除，可点顶部「撤回」恢复');});
   }
-
   function undo(){
     if(!lastAction)return;
-    var a=lastAction;clearAction();
-    if(a.type==='add'){ data=data.filter(function(x){return x.id!==a.id;});
-    }else if(a.type==='edit'){ var i=data.findIndex(function(x){return x.id===a.id;}); if(i>=0){data[i]=a.before;}
-    }else if(a.type==='del'){ data.splice(a.index,0,a.record); }
-    saveData().then(renderAll);
+    var a=lastAction; clearAction();
+    if(a.type==='add'){ data=data.filter(function(x){return x.id!==a.id;}); }
+    else if(a.type==='edit'){ var i=data.findIndex(function(x){return x.id===a.id;}); if(i>=0){data[i]=a.before;} }
+    else if(a.type==='del'){ data.splice(a.index,0,a.record); }
+    saveData().then(function(){renderAll();toast('已撤回上一次操作');});
+  }
+  function shiftDay(n){
+    var d=parseDate(selectedDate);d.setDate(d.getDate()+n);
+    selectedDate=fmtDate(d);calYear=d.getFullYear();calMonth=d.getMonth();renderAll();
   }
 
-  function shiftDay(n){var d=parseDate(selectedDate);d.setDate(d.getDate()+n);selectedDate=fmtDate(d);calYear=d.getFullYear();calMonth=d.getMonth();renderAll();}
+  /* ---------- 新增自定义情绪（供设置与记录弹窗共用） ---------- */
+  function addCustomEmotion(selectAfterAdd){
+    openInputDialog('新增自定义情绪',[
+      {label:'名称', value:'', placeholder:'例如：感动'},
+      {label:'Emoji', value:'', placeholder:'输入一个 emoji'}
+    ], function(values){
+      var key = values[0], emoji = values[1];
+      if(!key){ toast('名称不能为空'); return; }
+      if(!emoji){ toast('Emoji 不能为空'); return; }
+      if(getEmotionByKey(key) || isDefaultEmotionName(key)){ toast('该名称已存在'); return; }
+      var color = COLOR_PALETTE[emotionConfig.custom.length % COLOR_PALETTE.length];
+      var newEmo = {key: key, emoji: emoji, c: color.c, bg: color.bg};
+      lastEmotionAction = {type:'addCustom', data: newEmo};
+      emotionConfig.custom.push(newEmo);
+      saveEmotionConfig();
+      if(selectAfterAdd){
+        pickerExpanded = true;
+        selectedEmotions.add(key);
+      }
+      renderSettings();
+      renderEmotionPicker();
+      renderAll();
+      toast('已添加自定义情绪，下次打开仍会保留');
+    });
+  }
 
-  $('prevDay').addEventListener('click',function(){shiftDay(-1);});
-  $('nextDay').addEventListener('click',function(){shiftDay(1);});
-  $('todayBtn').addEventListener('click',function(){selectedDate=todayStr();var n=new Date();calYear=n.getFullYear();calMonth=n.getMonth();renderAll();});
-  $('fab').addEventListener('click',function(){openForm(null);});
-  $('saveBtn').addEventListener('click',saveRecord);
-  $('cancelBtn').addEventListener('click',closeForm);
-  $('closeBtn').addEventListener('click',closeForm);
-  $('modalBackdrop').addEventListener('click',closeForm);
-  undoBtn.addEventListener('click',undo);
-  $('backupBtn').addEventListener('click',openBackup);
-  $('backupCloseBtn').addEventListener('click',closeBackup);
-  $('backupBackdrop').addEventListener('click',closeBackup);
-  $('genBackupBtn').addEventListener('click',genBackup);
-  $('copyBackupBtn').addEventListener('click',copyBackup);
-  $('doImportBtn').addEventListener('click',doImport);
+  /* ---------- 情绪设置 ---------- */
+  function renderSettings(){
+    var body=$('settingsBody');
+    var emotions=getAllEmotions();
+    var html='';
+    emotions.forEach(function(em){
+      html+='<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);">'+
+        '<span style="font-size:20px;width:30px;text-align:center;">'+em.emoji+'</span>'+
+        '<span style="flex:1;">'+esc(em.key)+(em.isDefault?' <span style="font-size:11px;color:var(--ink-soft);">(默认)</span>':'')+'</span>'+
+        '<button class="iconbtn" data-action="edit" data-key="'+esc(em.key)+'" data-default="'+em.isDefault+'">✎</button>'+
+        (em.isDefault?'':'<button class="iconbtn del" data-action="delete" data-key="'+esc(em.key)+'">🗑</button>')+
+        '</div>';
+    });
+    body.innerHTML=html;
+    $('undoEmotionBtn').disabled=!lastEmotionAction;
+  }
+  function openSettings(){ renderSettings(); $('settingsModal').classList.add('open'); }
+  function closeSettings(){ $('settingsModal').classList.remove('open'); }
+
+  $('settingsBtn').onclick=openSettings;
+  $('settingsCloseBtn').onclick=closeSettings;
+  $('settingsBackdrop').onclick=closeSettings;
+  $('refreshEmotionsBtn').onclick=function(){
+    renderSettings();
+    renderEmotionPicker();
+    renderAll();
+    toast('已刷新');
+  };
+  $('addCustomEmotionBtn').onclick=function(){ addCustomEmotion(false); };
+  $('addEmotionInlineBtn').onclick=function(){ addCustomEmotion(true); };
+  $('undoEmotionBtn').onclick=function(){
+    if(!lastEmotionAction)return;
+    var a=lastEmotionAction; lastEmotionAction=null;
+    if(a.type==='defaultEmoji'){
+      if(a.oldEmoji) emotionConfig.overrides[a.key]=a.oldEmoji;
+      else delete emotionConfig.overrides[a.key];
+    }else if(a.type==='addCustom'){
+      var idx=emotionConfig.custom.findIndex(function(x){return x.key===a.data.key;});
+      if(idx>=0) emotionConfig.custom.splice(idx,1);
+    }else if(a.type==='editCustom'){
+      emotionConfig.custom[a.index]=a.oldData;
+    }else if(a.type==='deleteCustom'){
+      emotionConfig.custom.splice(a.index,0,a.data);
+    }
+    saveEmotionConfig();
+    renderSettings();
+    renderEmotionPicker();
+    renderAll();
+    toast('已撤回上一次情绪设置修改');
+  };
+
+  $('settingsBody').addEventListener('click',function(e){
+    var btn=e.target.closest('[data-action]');
+    if(!btn)return;
+    var action=btn.getAttribute('data-action');
+    var key=btn.getAttribute('data-key');
+    var isDefault=btn.getAttribute('data-default')==='true';
+    if(action==='edit'){
+      var em=getEmotionByKey(key);
+      if(!em)return;
+      if(isDefault){
+        openInputDialog('修改「'+key+'」的图标',[
+          {label:'Emoji',value:em.emoji,placeholder:'输入一个 emoji'}
+        ],function(values){
+          var newEmoji=values[0];
+          if(!newEmoji){toast('Emoji 不能为空');return;}
+          var oldEmoji=em.emoji;
+          emotionConfig.overrides[key]=newEmoji;
+          saveEmotionConfig();
+          lastEmotionAction={type:'defaultEmoji',key:key,oldEmoji:oldEmoji,newEmoji:newEmoji};
+          renderSettings();
+          renderEmotionPicker();
+          renderAll();
+          toast('图标已更新');
+        });
+      }else{
+        openInputDialog('编辑自定义情绪',[
+          {label:'名称',value:em.key,placeholder:'情绪名称'},
+          {label:'Emoji',value:em.emoji,placeholder:'输入一个 emoji'}
+        ],function(values){
+          var newKey=values[0],newEmoji=values[1];
+          if(!newKey){toast('名称不能为空');return;}
+          if(!newEmoji){toast('Emoji 不能为空');return;}
+          if(newKey!==em.key && (getEmotionByKey(newKey)||isDefaultEmotionName(newKey))){toast('该名称已存在');return;}
+          var oldData={key:em.key,emoji:em.emoji,c:em.c,bg:em.bg};
+          var newData={key:newKey,emoji:newEmoji,c:em.c,bg:em.bg};
+          var idx=emotionConfig.custom.findIndex(function(x){return x.key===em.key;});
+          if(idx>=0){
+            lastEmotionAction={type:'editCustom',oldData:oldData,newData:newData,index:idx};
+            emotionConfig.custom[idx]=newData;
+            saveEmotionConfig();
+            renderSettings();
+            renderEmotionPicker();
+            renderAll();
+            toast('自定义情绪已更新');
+          }
+        });
+      }
+    }else if(action==='delete'){
+      askConfirm('确定删除自定义情绪「'+key+'」吗？删除后历史记录中该情绪将显示为灰色。',function(ok){
+        if(!ok)return;
+        var idx=emotionConfig.custom.findIndex(function(x){return x.key===key;});
+        if(idx>=0){
+          var d=emotionConfig.custom[idx];
+          lastEmotionAction={type:'deleteCustom',data:d,index:idx};
+          emotionConfig.custom.splice(idx,1);
+          saveEmotionConfig();
+          renderSettings();
+          renderEmotionPicker();
+          renderAll();
+          toast('已删除自定义情绪');
+        }
+      });
+    }
+  });
+
+  /* ---------- FAQ 抽屉 ---------- */
+  function openHelp(){ $('helpDrawer').classList.add('open'); }
+  function closeHelp(){ $('helpDrawer').classList.remove('open'); }
+
+  /* ---------- 邮箱复制 ---------- */
+  (function bindEmailCopy(){
+    var el=$('emailCopy');
+    if(!el) return;
+    function copyEmail(){
+      var email='2639805728@qq.com';
+      var fallback=function(){
+        var ta=document.createElement('textarea');
+        ta.value=email;
+        ta.setAttribute('readonly','');
+        ta.style.position='fixed';ta.style.top='-1000px';ta.style.opacity='0';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0,email.length);
+        try{document.execCommand('copy');}catch(e){}
+        document.body.removeChild(ta);
+        toast('邮箱已复制：'+email);
+      };
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(email).then(function(){toast('邮箱已复制：'+email);}).catch(fallback);
+      }else{ fallback(); }
+    }
+    el.addEventListener('click',copyEmail);
+    el.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();copyEmail();}
+    });
+  })();
+
+  /* ---------- 事件绑定 ---------- */
+  $('prevDay').onclick=function(){shiftDay(-1);};
+  $('nextDay').onclick=function(){shiftDay(1);};
+  $('todayBtn').onclick=function(){selectedDate=todayStr();var n=new Date();calYear=n.getFullYear();calMonth=n.getMonth();renderAll();};
+  $('fab').onclick=function(){openForm(null);};
+  $('saveBtn').onclick=saveRecord;
+  $('cancelBtn').onclick=closeForm;
+  $('closeBtn').onclick=closeForm;
+  $('modalBackdrop').onclick=closeForm;
+  undoBtn.onclick=undo;
+
+  $('backupBtn').onclick=openBackup;
+  $('backupCloseBtn').onclick=closeBackup;
+  $('backupBackdrop').onclick=closeBackup;
+  $('genBackupBtn').onclick=genBackup;
+  $('copyBackupBtn').onclick=copyBackup;
+  $('exportFileBtn').onclick=exportFile;
+  $('doImportBtn').onclick=doImport;
+  $('pickFileBtn').onclick=pickFile;
+
+  $('helpBtn').onclick=openHelp;
+  $('helpClose').onclick=closeHelp;
+  $('helpBackdrop').onclick=closeHelp;
 
   dayList.addEventListener('click',function(e){
     var btn=e.target.closest('[data-act]'); if(!btn)return;
     var rec=btn.closest('.rec'); if(!rec)return;
-    var id=rec.getAttribute('data-id'); var r=data.find(function(x){return x.id===id;}); if(!r)return;
-    if(btn.getAttribute('data-act')==='edit'){openForm(r);} else{deleteRecord(id);}
+    var id=rec.getAttribute('data-id');
+    var r=data.find(function(x){return x.id===id;}); if(!r)return;
+    if(btn.getAttribute('data-act')==='edit'){openForm(r);}
+    else{deleteRecord(id);}
   });
-
   calGrid.addEventListener('click',function(e){
     var c=e.target.closest('.cal-cell[data-date]'); if(!c)return;
     selectedDate=c.getAttribute('data-date');
-    var nd=parseDate(selectedDate); calYear=nd.getFullYear(); calMonth=nd.getMonth();
-    renderAll();
+    var nd=parseDate(selectedDate); calYear=nd.getFullYear(); calMonth=nd.getMonth(); renderAll();
   });
-  $('calPrev').addEventListener('click',function(){calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCalendar();});
-  $('calNext').addEventListener('click',function(){calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCalendar();});
+  $('calPrev').onclick=function(){calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCalendar();};
+  $('calNext').onclick=function(){calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCalendar();};
 
   var tabs=document.querySelectorAll('.tab');
   for(var t=0;t<tabs.length;t++){
-    tabs[t].addEventListener('click',function(){
+    tabs[t].onclick=function(){
       for(var j=0;j<tabs.length;j++){tabs[j].classList.remove('active');}
       this.classList.add('active');
       statsRange=this.getAttribute('data-range');
       renderStats();
-    });
+    };
   }
 
-  var emoBtns=document.querySelectorAll('.emo-btn');
-  for(var k=0;k<emoBtns.length;k++){
-    emoBtns[k].addEventListener('click',function(){selectEmotion(this.getAttribute('data-emotion'));});
-  }
+  $('emotionRow').addEventListener('click',function(e){
+    var btn=e.target.closest('.emo-btn'); if(!btn)return;
+    var key=btn.getAttribute('data-emotion');
+    if(selectedEmotions.has(key)){ selectedEmotions.delete(key); }
+    else{ selectedEmotions.add(key); }
+    renderEmotionPicker();
+  });
+  $('toggleEmotionBtn').onclick=function(){
+    pickerExpanded=!pickerExpanded;
+    renderEmotionPicker();
+  };
 
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeForm();closeBackup();}});
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    if($('confirmModal').classList.contains('open')){closeConfirm(false);return;}
+    if($('helpDrawer').classList.contains('open')){closeHelp();return;}
+    if($('backupModal').classList.contains('open')){closeBackup();return;}
+    if($('settingsModal').classList.contains('open')){closeSettings();return;}
+    if($('inputModal').classList.contains('open')){inputCallback=null;$('inputModal').classList.remove('open');return;}
+    closeForm();
+  });
 
-  // ===== 初始化加载 =====
-  loadData().then(renderAll);
-
+  /* ---------- 启动（原生 localStorage 加载逻辑未改动） ---------- */
+  loadData().then(function(){
+    migrateData();
+    loadEmotionConfig();
+    renderAll();
+    initPrivacy();
+  });
 })();
 </script>
 </body>
